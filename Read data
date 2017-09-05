@@ -1,0 +1,8 @@
+# set up library
+setwd("C:\\Ram\\R for Data Science\\data")
+# read data
+prd_spend <-read.csv(file="prod_spend.csv",
+                     head=T)
+names(prd_spend)
+str(prd_spend)
+summary(prd_spend)
