@@ -1,0 +1,39 @@
+##  -------------------Row or Observation Changes ------------
+
+
+# create index
+hundreth <- seq(from=2,to=nrow(prd_spend),by=100)
+head(hundreth)
+# Scenario 1
+prd_spend.even <-prd_spend[hundreth,]
+
+nrow(prd_spend.even)
+## ---
+names(prd_spend)
+summary(prd_spend$Balance)# scenario 2
+names(prd_spend)
+# Select customers which have over median spend
+spend_over_median <- prd_spend[prd_spend$Balance>4940,]
+# Two condition - & element wise comparison and && overall comparison
+prd_select <-prd_spend[prd_spend$Balance <100 & prd_spend$Spend_Value>200,]
+# Use which function 
+prd_select <-prd_spend[which(prd_spend$Balance <100 & prd_spend$Spend_Value>200),]
+
+# Scenario 3: randomly select 1000 rows
+sample_index <-sample(1:nrow(prd_spend ), 1000,
+                      replace=FALSE)
+prd_spend.sample <- prd_spend[sample_index,]
+prd_random <- prd_spend [sample(1:nrow(prd_spend ), 1000,
+                                replace=FALSE),]
+
+summary(prd_spend)
+summary(prd_random)
+
+both.row.col <-prd_spend[1:10,c(2,5)]
+
+## Select both observations and variables
+prd_var_obs <- subset(prd_spend,
+                      prd_spend$Balance <100 & prd_spend$Spend_Value>200,
+                      select=c("Balance","Spend_Value"))
+
+# Find - way to drop variables using subset function
